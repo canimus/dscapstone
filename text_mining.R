@@ -3,7 +3,7 @@ install.packages(Needed, dependencies=TRUE)
 install.packages("Rcampdf", repos = "http://datacube.wu.ac.at/", type = "source")  
 
 # Location of corpus locally
-cname <- file.path("/sw/apps/coursera/capstone", "input", "final", "en_US")
+cname <- file.path("d:", "dscapstone", "final", "en_US")
 
 library(tm)   
 docs <- Corpus(DirSource(cname))
