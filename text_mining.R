@@ -3,7 +3,7 @@ install.packages(Needed, dependencies=TRUE)
 install.packages("Rcampdf", repos = "http://datacube.wu.ac.at/", type = "source")  
 
 # Location of corpus locally
-cname <- file.path("/sw/apps/coursera/capstone", "input", "final", "en_US")
+cname <- file.path("/sw/apps/coursera/capstone", "final", "en_US")
 
 library(tm)   
 docs <- Corpus(DirSource(cname))
@@ -11,8 +11,8 @@ docs <- Corpus(DirSource(cname))
 ## Transformattion stage for standarisation of document content
 ## START: Preprocessing Stage
 ## ========================================================================
-docs <- tm_map(docs, removePunctuation)   # *Removing punctuation:*
-docs <- tm_map(docs, removeNumbers)      # *Removing numbers:*
+docs <- tm_map(docs, removePunctuation, mc.cores=4)   # *Removing punctuation:*
+docs <- tm_map(docs, removeNumbers, mc.cores=4)      # *Removing numbers:*
 docs <- tm_map(docs, tolower)   # *Converting to lowercase:*
 docs <- tm_map(docs, removeWords, stopwords("english"))   # *Removing "stopwords"
 
